@@ -58,21 +58,22 @@ int removerInicio(FILA f){
   free(t);
   return x;
 }
-
 int removerFinal(FILA f){
   int x;
   link t;
-  if(filaVazia(f)){
-    printf ("Erro, a fila esta vazia\n");
-    return 0;
-  }
-  
-  x = f->maisAntigo->item;
-  t = f->maisAntigo;
-  f->maisNovo = f->maisNovo->next;
+ 	if(filaVazia(f)){
+    	printf ("Erro, a fila esta vazia\n");
+    	return 0;
+  	}
 
-  if(f->maisAntigo == NULL)
-    f->maisNovo = NULL;
+  for(t = f->maisAntigo; t->next == f->maisNovo; t = t->next) {
+ 	}
+    t->next = NULL;
+    f->maisNovo  = t;
+    x = f->maisNovo->item;
+ 
+   if(f->maisAntigo == NULL)	
+   		f->maisNovo = NULL;
 
   free(t);
   return x;
